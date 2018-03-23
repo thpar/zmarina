@@ -1,0 +1,9 @@
+/*
+* @author     Chanaka Mannapperuma <irusri@gmail.com>
+* @date       2014-02-06
+* @version    Beta 1.0
+* @usage      Expression view basic calculations
+* @licence    GNU GENERAL PUBLIC LICENSE
+* @link       http://irusri.com
+*/
+function calculatedatasignal(a,o){if("relative"==private_mode){var e=0;maxRatio=0;for(var t in a.popdata){var r;e=parseFloat(a.popdata[t].log2fc)/o,Math.abs(e)>maxRatio?maxRatio=Math.abs(e):maxRatio=o;var l=clamp(Math.floor(256*e),-255,255);r=l>0?rgbToHex(255,255-l,0):rgbToHex(255+l,255+l,-l),colourobjects(a.popdata[t].sample,r,a.popdata[t].log2fc)}}else for(var t in a.popdata){var p,d,g=Math.floor(256*a.popdata[t].log2/o);p=a.popdata[t].log2==o?0:255-g,d=a.popdata[t].log2>0?rgbToHex(255,p,0):rgbToHex(255+g,p,-g),colourobjects(a.popdata[t].sample,d,a.popdata[t].log2)}}function getthemaxvalue(a){var o=0,e=new Array;for(var t in a.popdata){var r;"relative"==private_mode?(r=parseFloat(a.popdata[t].log2fc))<0&&(r=-1*parseFloat(a.popdata[t].log2fc)):(r=parseFloat(a.popdata[t].log2))<0&&(r=parseFloat(-1*a.popdata[t].log2)),e.push(r)}0==(o=Math.max.apply(Math,e))?(errorboolean=!0,callerror()):errorboolean=!1,calculatedatasignal(a,o),populateLegend(parseFloat(o))}function populateLegend(a){createlegendholder(50,200);var o,e,t,r="";if("relative"==private_mode)for(var l=-2*maxRatio,p=-Math.abs(l)/(legenditems-1),d=maxRatio,g=0;g<legenditems;g++)g==legenditems-1&&(d=-1*maxRatio),o=256*d/maxRatio,o=clamp(o,-255,255),r=0==g?"   "+Math.pow(2,d).toString().substr(0,4)+"-fold":"",t=d>0?rgbToHex(255,255-o,0):rgbToHex(255+o,255+o,-o),createlegends(t,roundNumber(d,2)+r,g),d+=p;else for(var i=roundNumber(a/legenditems,2),n=a,m=0;m<legenditems;m++)o=Math.floor(256*n/a),e=n==a?0:255-o,t=n>=0?rgbToHex(255,e,0):rgbToHex(Math.min(255,255+o),Math.min(255,255+o),-o),createlegends(t,roundNumber(n,2),m),n-=i}
