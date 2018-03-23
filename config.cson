@@ -1,0 +1,14 @@
+"*":
+  "Remote-FTP":
+    showHiddenFiles: false
+    showViewOnStartup: false
+  core:
+    telemetryConsent: "no"
+    themes: [
+      "one-light-ui"
+      "atom-light-syntax"
+    ]
+  "exception-reporting":
+    userId: "01351eb1-9663-b8fb-4739-636293b4caaf"
+  welcome:
+    showOnStartup: true
