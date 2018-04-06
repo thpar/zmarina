@@ -3,7 +3,6 @@ ob_start();
 session_start();
 include_once("plugins/settings.php");
 $rp = isset($_REQUEST['page']) ? $_REQUEST['page'] : '';
-$hostname = 'http://'.$_SERVER['HTTP_HOST']."/";
 
 $c['password'] = 'admin';
 $c['loggedin'] = false;
@@ -124,16 +123,16 @@ function content($id,$content){
 
 
 function genie_menu(){
-	global $c,$hostname;
+	global $c;
 	$mlist = explode('<br />',$c['menu']);
 	for($i=0;$i<count($mlist);$i++){
 		$page = getthetitle_for_menu($mlist[$i]);
 		if(!$page) continue;
 		if(substr($page,0,1)!="-"){
-			$menu_items= "<li><a target='_parent' href='".$hostname.$page."'>".str_replace('-',' ',$page)."</a></li>";
+			$menu_items= "<li><a target='_parent' href='$page'>".str_replace('-',' ',$page)."</a></li>";
 		}else{
 			$page_display=str_replace("_"," ",$page);
-			$menu_items= "<ul><li><a target='_parent' href='".$hostname.str_replace('-','',$page)."'>".str_replace('-',' ',$page_display)."</a></li></ul>";
+			$menu_items= "<ul><li><a target='_parent' href='".str_replace('-','',$page)."'>".str_replace('-',' ',$page_display)."</a></li></ul>";
 		}
 		$contact_menu_items.=$menu_items;
 	}
