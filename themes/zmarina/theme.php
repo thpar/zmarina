@@ -1,10 +1,9 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en"> 
    <head>
       <?php
          echo "<meta charset='utf-8'>
          <title>".$c['title']." : ".($c['page'])."</title>
-         <base href='$hostname'>
          <link rel='stylesheet' href='themes/".$c['themeSelect']."/css/style.css'>
          <link rel='stylesheet' href='themes/".$c['themeSelect']."/css/toastr.min.css' type='text/css' media='all'>
          

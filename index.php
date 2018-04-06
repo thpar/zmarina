@@ -45,7 +45,7 @@ foreach($c as $key => $val){
 				if(is_loggedin())header('Location: ./');
 				loginForm();
 			}
-			$lstatus = (is_loggedin())? "<a href='$hostname?logout'>Logout</a>": "<a href='$hostname?login'>Login</a>";
+			$lstatus = (is_loggedin())? "<a href='?logout'>Logout</a>": "<a href='?login'>Login</a>";
 			break;
 		case 'page':
 			if($rp)$c[$key]=$rp;
