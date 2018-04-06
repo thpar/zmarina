@@ -1,13 +1,10 @@
 <?php
-if($_SERVER['HTTP_HOST']=="geniecms.org"){header('Location: https://eucgenie.org/');}
-//echo getcwd();
-//echo str_replace($_SERVER['DOCUMENT_ROOT'],"",getcwd())."s";
 ob_start();
 session_start();
 include_once("plugins/settings.php");
 $rp = isset($_REQUEST['page']) ? $_REQUEST['page'] : '';
 $hostname = 'http://'.$_SERVER['HTTP_HOST']."/";
-//."/demo/geniecms/";//.str_replace($rp, '', $_SERVER['REQUEST_URI']);
+
 $c['password'] = 'admin';
 $c['loggedin'] = false;
 $c['page'] = 'home';
