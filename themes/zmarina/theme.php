@@ -35,8 +35,7 @@
             </div>
          </div>
          <header>
-            <img id="logo_img" style="margin-left:8%;padding-top:4px;cursor:pointer;;padding-left:4px;;padding-right:4px;opacity:0.9"
-            onClick="location.href='<?php echo $c['hostname']?>';" src="themes/<?php echo $c['themeSelect']?>/images/logo2.png"/>
+            <a href="/zosgenie"><img id="logo_img" style="margin-left:8%;padding-top:4px;cursor:pointer;;padding-left:4px;;padding-right:4px;opacity:0.9" src="themes/<?php echo $c['themeSelect']?>/images/logo2.png"/></a>
 <?php    include_once("plugins/autocomplete/autocompletesearch2.php");?> 
          </header>
 
