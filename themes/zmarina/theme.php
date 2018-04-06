@@ -60,7 +60,7 @@
             }else{?>
          <div id="wrapper" class="border">
          
-           <?php if($_SERVER[REQUEST_URI] =="/"){?>
+           <?php if($_SERVER['REQUEST_URI'] =="/"){?>
 <div id="alert-error" class="alert alert-info">
   <a onclick="closeme2()" class="closex" data-dismiss="alert">×</a>
   <strong>Click here to <button id="startTourBtn" class="tourbtn tourbtn-primary">Start a tour</button> of  Zostera marina basic features.</strong>
@@ -76,7 +76,7 @@
 
          
 
-         <?php if($_SERVER[REQUEST_URI] =="/"){?>
+         <?php if($_SERVER['REQUEST_URI'] =="/"){?>
          
          <!--Adobe Edge Runtime-->
 
@@ -137,7 +137,7 @@
   ga('send', 'pageview');
 
 </script>
-           <?php if($_SERVER[REQUEST_URI] =="/"){?>
+           <?php if($_SERVER['REQUEST_URI'] =="/"){?>
 
   
    <!-- Start of Async Drift Code -->
