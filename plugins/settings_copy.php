@@ -1,4 +1,6 @@
 <?php
+date_default_timezone_set('CET');
+
 /*Here you can listed genie databases that you are going to use for different genomes and their corresponding species names. eg: "database_1" => "species 1",*/
 global $db_species_array;
 $db_species_array=array("database1"=>"species 1","database2"=>"species 2");
