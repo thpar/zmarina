@@ -125,6 +125,7 @@ function content($id,$content){
 function genie_menu(){
 	global $c;
 	$mlist = explode('<br />',$c['menu']);
+    $contact_menu_items = "";
 	for($i=0;$i<count($mlist);$i++){
 		$page = getthetitle_for_menu($mlist[$i]);
 		if(!$page) continue;
