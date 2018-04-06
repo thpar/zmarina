@@ -49,7 +49,7 @@ if (mysql_num_rows($defaultresults) != 0) {
 
             ?></td>
          <td>
-            <?
+            <?php
                if($data['gene_basket_id']==$default_g_id){
                	?>
             <script>
