@@ -1,6 +1,7 @@
 data
 scripts
 genie_files
+plugins/settings.php
 analyses
 screencasts
 .vscode
