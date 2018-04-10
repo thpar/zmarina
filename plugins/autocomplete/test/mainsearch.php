@@ -4,6 +4,7 @@
  * Load sample data
  */
 include 'data.php';
+require_once(realpath(__DIR__.'/../../settings.php'));
 
 /*
  * Results array
@@ -38,12 +39,9 @@ if (isset($_GET['q'])) {
   $q = trim($_GET['q']);
   $onlyconsonants=strtolower($q);
   if ($q) {
-	mysql_connect("localhost", "conuser", "conpass") or die(mysql_error());
-	mysql_select_db("congeniegenepagesbeta") or die(mysql_error());
+      mysql_connect($db_settings['host'], $db_settings['user'], $db_settings['pass']) or die(mysql_error());
+      mysql_select_db($selected_database) or die(mysql_error());
 	
-	//if(substr($q, 0, 2)!="MA"){
-	//$resultssequence = mysql_query("select trinityname,division,taxonomyname from trinity_taxonomy where trinityname like '%$q%'")or die(mysql_error());
-	//}else if(substr($q, 0, 4)=="comp"){
 	/*$resultssequence = mysql_query("SELECT trinityname,division,taxonomyname FROM trinity_taxonomy WHERE concat(taxonomyname, division,trinityname) LIKE '%$q%' order by division DESC limit 20; ")or die(mysql_error());
 		$j = 0;
 		while($sequencearr = mysql_fetch_array($resultssequence)){

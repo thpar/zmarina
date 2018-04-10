@@ -4,6 +4,7 @@
  * Load sample data
  */
 include 'data.php';
+require_once(realpath(__DIR__.'/../../settings.php'));
 
 /*
  * Results array
@@ -37,8 +38,8 @@ if (isset($_GET['q'])) {
   //$q = strtolower($_GET['q']);
   $q = trim($_GET['q']);
   if ($q) {
-	mysql_connect("localhost", "conuser", "conpass") or die(mysql_error());
-	mysql_select_db("congeniegenepagesbeta") or die(mysql_error());
+      mysql_connect($db_settings['host'], $db_settings['user'], $db_settings['pass']) or die(mysql_error());
+      mysql_select_db($selected_database) or die(mysql_error());
 	
 	if(substr($q, 0, 3)!="MA_"){
 	//$resultssequence = mysql_query("select trinityname,division,taxonomyname from trinity_taxonomy where trinityname like '%$q%'")or die(mysql_error());

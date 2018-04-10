@@ -4,6 +4,8 @@
   header('Cache-Control: no-cache');
   header('Pragma: no-cache');
 
+require_once(realpath(__DIR__.'/../../settings.php'));
+
 
 $primaryGene = trim($_GET['primaryGene']);
 $sample = trim($_GET['sample']);
@@ -37,8 +39,8 @@ if(checkprefix($primaryGene,"Potra")==true){
 /////////////////////////////////////
 
 // Make a MySQL Connection
-mysql_connect("localhost", "popuser", "poppass") or die(mysql_error());
-mysql_select_db("eucgenie_egrandis_v2") or die(mysql_error());
+mysql_connect($db_settings['host'], $db_settings['user'], $db_settings['pass']) or die(mysql_error());
+mysql_select_db($selected_database) or die(mysql_error());
 
 if($view=="plant" || $view=="experiment_2"){
 if(checkprefix($primaryGene,"Eu")==true){

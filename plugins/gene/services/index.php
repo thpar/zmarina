@@ -5,9 +5,8 @@ $table_name="transcript_info";
 $id_type="";
  
 //MySQL connection from main settings file. database is popgeniegenepages
-$private_url = parse_url($db_url['genelist']);
-mysql_connect($private_url['host'], $private_url['user'], $private_url['pass']) or die(mysql_error());
-mysql_select_db(str_replace('/', '', $private_url['path'])) or die(mysql_error());
+mysql_connect($db_settings['host'], $db_settings['user'], $db_settings['pass']) or die(mysql_error());
+mysql_select_db($selected_database) or die(mysql_error());
 
 //Initial check whether given ID exsist on our Database
 if(isset($post_id) && $post_id != ''){

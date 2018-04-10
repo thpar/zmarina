@@ -13,8 +13,10 @@
 include_once('/mnt/spruce/www/zmarina_ship/plugins/help/help/Parsedown.php');
 $Parsedown = new Parsedown();
 // Make a MySQL Connection
-mysql_connect("130.239.12.229", "popuser", "poppass") or die(mysql_error());
-mysql_select_db("help_db") or die(mysql_error());
+// FIXME: Used originally to connect to `help_db` (db not currently available?)
+require_once(realpath(__DIR__.'/../settings.php'));
+mysql_connect($db_settings['host'], $db_settings['user'], $db_settings['pass']) or die(mysql_error());
+mysql_select_db($selected_database) or die(mysql_error());
 
 $help_results_blast = mysql_query("select post_content from wp_posts where post_status='publish' AND post_title='BLAST';")
 or die(mysql_error()); 
