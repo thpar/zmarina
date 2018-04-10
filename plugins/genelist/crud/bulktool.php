@@ -10,9 +10,6 @@ drupal_bootstrap(DRUPAL_BOOTSTRAP_FULL);
 global $user;
 
 
-//include("/mnt/spruce/www/popgenie1/crud/koneksi.php");
-//include  '/mnt/spruce/www/popgenie1/popgenie_global.php';
-//require_once 'popconnection.php';
 header('Cache-Control: no-cache');
   		header('Pragma: no-cache');
 
@@ -55,8 +52,7 @@ document.domain="popgenie.org";
 				
 				
 				}*/
-	
-	include("/mnt/spruce/www/v3/crud/getgenelist.php");
+    include(realpath(__DIR__.'/getgenelist.php'));	
 
 $genessendStringt =  implode(',',getdefaultgenelist()); 		
 			

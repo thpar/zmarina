@@ -24,6 +24,6 @@ body,html
 <a href="http://v3.popgenie.org/crud/formbarang.php?action=add" class="add">add item</a>
 <br /><br />
 
-<div id="content"><?php include("/mnt/spruce/www/v3/crud/listbarang.php");?></div>
+     <div id="content"><?php include(realpath(__DIR__.'/listbarang.php'));?></div>
 </body>
 </html>

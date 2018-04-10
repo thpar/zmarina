@@ -10,7 +10,8 @@
 <br />
 <?php  
 
-include_once('/mnt/spruce/www/zmarina_ship/plugins/help/help/Parsedown.php');
+
+include_once(realpath(__DIR__.'/help/Parsedown.php'));
 $Parsedown = new Parsedown();
 // Make a MySQL Connection
 // FIXME: Used originally to connect to `help_db` (db not currently available?)
