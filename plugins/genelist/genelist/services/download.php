@@ -1,8 +1,7 @@
 <?php 
 header('Content-type: text/plain; charset=utf-8');
 require_once('Datatables2.php');
-require_once('settings.php');  
-
+require_once(realpath(__DIR__.'/../../../settings.php'));
 
 if(isset($_POST['checkrandomid'])){
 		$checkrandomid=checksharedlinkexist(trim($_POST['checkrandomid']));

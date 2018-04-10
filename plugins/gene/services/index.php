@@ -1,6 +1,6 @@
 <?php
 $post_id=trim($_POST['id']);
-require_once('settings.php'); 
+require_once(realpath(__DIR__.'/../../settings.php'));
 $table_name="transcript_info";
 $id_type="";
  

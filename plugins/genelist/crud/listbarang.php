@@ -1,6 +1,4 @@
 <?php
-	//require_once('sites/default/settings.php');
-	//global $base_url;
 	include("koneksi.php");
 	$defaultgenebasketname = "";
 	$ip=$uuid;

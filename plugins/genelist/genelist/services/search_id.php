@@ -1,6 +1,6 @@
 <?php
 require_once('Datatables2.php');
-require_once('settings.php');
+require_once(realpath(__DIR__.'/../../../settings.php'));
 include('../../crud/getgenelist.php');
 $default_gene_basket_array=getdefaultgenelist();
 
