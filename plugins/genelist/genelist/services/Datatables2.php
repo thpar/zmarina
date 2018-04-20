@@ -587,7 +587,7 @@ if($iFilteredTotal!=73013 && $iFilteredTotal!=90435 && $iFilteredTotal!=52826 ){
       foreach($rResult->result_array() as $row_key => $row_val)
       {
         ////$aaData[$row_key] = ($this->check_mDataprop())? $row_val : array_values($row_val);
-		$aaData[$row_key] = $row_val[ID];
+		$aaData[$row_key] = $row_val['ID'];
 		
         //foreach($this->add_columns as $field => $val)
           //if($this->check_mDataprop())
