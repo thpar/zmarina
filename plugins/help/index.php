@@ -1,17 +1,18 @@
 <?php 
-$subdir_arr = explode("/", $_SERVER['REDIRECT_URL']);
+$subdir_arr = explode("/", $_SERVER['REQUEST_URI']);
 $mennu_arr= explode("<br />", $c['menu']);
 $menu_exist=false;
 
-for($search_num=0;$search_num<count($mennu_arr);$search_num++){
-	if(trim(strtolower($mennu_arr[$search_num]))==strtolower($subdir_arr[count($subdir_arr)-1]) || trim(strtolower($mennu_arr[$search_num]))=="-".strtolower($subdir_arr[count($subdir_arr)-1])){
+foreach($mennu_arr as $searched){
+	if(trim(strtolower($searched)) == strtolower(end($subdir_arr)) || 
+       trim(strtolower($searched)) == "-".strtolower(end($subdir_arr))){
 		$menu_exist=true;
 	}
 }
 
-if(strtolower(basename(dirname(__FILE__)))== strtolower($subdir_arr[count($subdir_arr)-1]) && $menu_exist==true){
+if(strtolower(basename(dirname(__FILE__))) == strtolower(end($subdir_arr)) && $menu_exist){
 	$c['initialize_tool_plugin']=true;
-	$c['tool_plugin']=strtolower($subdir_arr[count($subdir_arr)-1]);
+	$c['tool_plugin']=strtolower(end($subdir_arr));
 
 }
 ?>
