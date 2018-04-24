@@ -7,3 +7,5 @@ screencasts
 *~
 .vscode
 .DS_Store
+.project
+.buildpath
