@@ -89,8 +89,9 @@
   </script>
 
 
- <form   class="search"  >
-		 <input type="text" name="unavailable"   id="mainsearch" placeholder="<?php echo $_GET["id"]!=''?($_GET["id"]):("Zosma185g00290, Zosma196g00200.1 or desc"); ?>" />
+ <form class="search"  >
+		 <input type="text" name="unavailable" id="mainsearch" 
+		 		placeholder="<?php echo (in_array('id', $_GET) && $_GET['id']!='')?($_GET['id']):("Zosma185g00290, Zosma196g00200.1 or desc"); ?>" />
  </form>
 
    <script type="text/javascript">
