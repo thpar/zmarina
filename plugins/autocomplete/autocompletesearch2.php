@@ -1,10 +1,5 @@
-<?php
-?>
-<?php if( $title!="Preparing data needed for BLAST jobs..." && $title!="Administrate datasets/db for the Bioinformatic Software Bench" && $title!="Rebuilding content access permissions"){ ?>
-<!--  <script src="sites/all/themes/admire_grunge/tabs/vendor/jquery-ui.js"></script>
-  <link rel="stylesheet" href="sites/all/themes/simply_modern/tabs/vendor/jquery-ui.css" />-->
-   <link rel="stylesheet" href="plugins/autocomplete/css/jquery-ui.css" />
- <link rel="stylesheet" type="text/css" href="plugins/autocomplete/css/pop.css">
+<link rel="stylesheet" href="plugins/autocomplete/css/jquery-ui.css" />
+<link rel="stylesheet" type="text/css" href="plugins/autocomplete/css/pop.css">
    <script>
   $.widget("custom.catcomplete", $.ui.autocomplete, {
 		_renderMenu: function( ul, items ) {
@@ -93,14 +88,6 @@
   });
   </script>
 
-
-  <?php
-}
-?>
-
-
-<!--<div id="search2"  class="search2" ><div class="tool-tip slideIn left">Click here to search</div><input placeholder="e.g. MA_75204g0010, PITA_000077265"  onmouseout="return myFunction(this)" onKeyPress="return searchenter(this,event)" name="mainsearch" id="mainsearch" type="search"></input>			</div>
--->
 
  <form   class="search"  >
 		 <input type="text" name="unavailable"   id="mainsearch" placeholder="<?php echo $_GET["id"]!=''?($_GET["id"]):("Zosma185g00290, Zosma196g00200.1 or desc"); ?>" />
