@@ -737,7 +737,7 @@ ColReorder.prototype = {
 		  //Martin Marchetta 
 		  //a. Disable column sorting so as to avoid issues when finishing column resizing
 		  this.s.dt.aoColumns[i].bSortable = false;
-		  //b. Disable Autowidth feature (now the user is in charge of setting column width so keeping this enabled looses changes after operations)
+		  //b. Disable Autowidth feature (now the user is in charge of setting column width so keeping this enabled loses changes after operations)
 		  this.s.dt.oFeatures.bAutoWidth = false;
 		  ////////////////////
     }

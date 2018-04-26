@@ -15,7 +15,7 @@ $(function() {
     })
     $("a.delete").click(function() {
         el = $(this);
-        if (confirm("Are you sure you want to delete this gene list,you will loose all the genes in it?")) {
+        if (confirm("Are you sure you want to delete this gene list,you will lose all the genes in it?")) {
             $.ajax({
                 url: $(this).attr("href"),
                 type: "GET",

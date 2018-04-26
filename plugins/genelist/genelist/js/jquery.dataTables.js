@@ -3471,7 +3471,7 @@
 				nScrollFootInner.style.paddingRight = bScrolling ? o.oScroll.iBarWidth+"px" : "0px";
 			}
 		
-			/* Adjust the position of the header in case we loose the y-scrollbar */
+			/* Adjust the position of the header in case we lose the y-scrollbar */
 			$(nScrollBody).scroll();
 			
 			/* If sorting or filtering has occurred, jump the scrolling back to the top */
