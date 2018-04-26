@@ -25,6 +25,10 @@ $db_settings = array(
     'user' => "",
     'pass' => ""
 );
+
+//Settings SQL modes here, allows for disabling the default STRICT_TRANS_TABLES  which prevents PHP from inserting '' in auto_increment fields.
+$db_settings['modes'] = "ONLY_FULL_GROUP_BY,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION";
+
 $db_url = array ('genelist'=>
                  "mysqli://".$db_settings['user'].":".$db_settings['pass']."@".$db_settings['host']."/".$selected_database);
 
