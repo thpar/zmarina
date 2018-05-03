@@ -9,3 +9,4 @@ screencasts
 .DS_Store
 .project
 .buildpath
+.settings
