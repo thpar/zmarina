@@ -58,7 +58,7 @@ function changeview(e) {
     removerootsvg();
     var t = document.getElementById("experiment_1"),
         l = document.getElementById("experiment_2");
-     "experiment_1" == e ? (t.checked = !0, chanaka.xml("plugins/eximage/svg/zosma_scheme_7.svg", "image/svg+xml", function(e) {
+     "experiment_1" == e ? (t.checked = !0, chanaka.xml("plugins/eximage/svg/zosma_scheme_8.svg", "image/svg+xml", function(e) {
         document.importNode(e.documentElement, !0);
         chanaka.select("#viz").node().appendChild(e.documentElement), retrievedata()
     })) : "experiment_2" == e && (l.checked = !0, chanaka.xml("plugins/eximage/svg/experiment_2.svg", "image/svg+xml", function(e) {
