@@ -30,12 +30,8 @@ $popgenie_genepages_config = array(
 'hostname' => $private_url['host']);
 // MYSQL configuration
 $datatables->connect($popgenie_genepages_config);
-$datatables
- 
-
-->select(''.$table_name.'.gene_id as ID,"check_box_value",'.$table_name.'.gene_id as ids,'.$table_name.'.transcript_id,'.$table_name.'.chromosome_name,'.$table_name.'.description,transcript_potri.potri_id,transcript_atg.atg_id,gene_kegg.kegg_description,gene_atg.atg_description,gene_go.go_description,gene_pfam.pfam_description')
-->from($table_name) 
-->join('transcript_potri', 'transcript_potri.transcript_i=transcript_info.transcript_i', 'left')
+$datatables->select(''.$table_name.'.gene_id as ID,"check_box_value",'.$table_name.'.gene_id as ids,'.$table_name.'.transcript_id,'.$table_name.'.chromosome_name,'.$table_name.'.description,transcript_atg.atg_id,gene_kegg.kegg_description,gene_atg.atg_description,gene_go.go_description,gene_pfam.pfam_description')
+->from($table_name)
 ->join('transcript_atg', 'transcript_atg.transcript_i=transcript_info.transcript_i', 'left')
 ->join('gene_kegg', 'gene_kegg.gene_i=transcript_info.gene_i', 'left')
 	->join('gene_atg', 'gene_atg.gene_i=transcript_info.gene_i', 'left')
@@ -43,9 +39,7 @@ $datatables
 	->join('gene_pfam', 'gene_pfam.gene_i=transcript_info.gene_i', 'left')
 ->edit_column('ids', '<a target="_parent" href="gene?id=$1" target="_blank">$1</a>', 'ID') 
 ->edit_column(''.$table_name.'.transcript_id', '<a target="_blank" href="transcript?id=$1">$1</a>', ''.$table_name.'.transcript_id')
-->edit_column('transcript_potri.potri_id', '<a target="_blank" href="http://popgenie.org/transcript?id=$1">$1</a>', 'transcript_potri.potri_id') 
 ->edit_column('transcript_atg.atg_id', '<a target="_blank" href="http://atgenie.org/transcript?id=$1">$1</a>', 'transcript_atg.atg_id') ;
-//->unset_column(''.$table_name.'.gene_end') ; 
 
 if(isset($sharred_list)){
 $datatables->where($table_name.'.gene_id in ',$sharred_list);	
