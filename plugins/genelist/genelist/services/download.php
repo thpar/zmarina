@@ -37,27 +37,17 @@ $datatables->connect($popgenie_genepages_config);
 
 
 $datatables
-->select(''.$table_name.'.gene_id as ID,"check_box_value",'.$table_name.'.gene_id as ids,'.$table_name.'.transcript_id,'.$table_name.'.chromosome_name,'.$table_name.'.description,transcript_potri.potri_id,transcript_atg.atg_id,gene_kegg.kegg_description,gene_atg.atg_description,gene_go.go_description,gene_pfam.pfam_description')
+->select(''.$table_name.'.gene_id as ID,"check_box_value",'.$table_name.'.gene_id as ids,'.$table_name.'.transcript_id,'.$table_name.'.chromosome_name,'.$table_name.'.description,transcript_atg.atg_id,gene_kegg.kegg_description,gene_atg.atg_description,gene_go.go_description,gene_pfam.pfam_description')
 ->from($table_name) 
-->join('transcript_potri', 'transcript_potri.transcript_i=transcript_info.transcript_i', 'left')
 ->join('transcript_atg', 'transcript_atg.transcript_i=transcript_info.transcript_i', 'left')
 ->join('gene_kegg', 'gene_kegg.gene_i=transcript_info.gene_i', 'left')
 	->join('gene_atg', 'gene_atg.gene_i=transcript_info.gene_i', 'left')
 	->join('gene_go', 'gene_go.gene_i=transcript_info.gene_i', 'left')
-	->join('gene_pfam', 'gene_pfam.gene_i=transcript_info.gene_i', 'left')
-
-
-//->edit_column('ids', '<a target="_parent" href="gene?id=$1" target="_blank">$1</a>', 'ID') 
-//->edit_column(''.$table_name.'.transcript_id', '<a target="_blank" href="transcript?id=$1">$1</a>', ''.$table_name.'.transcript_id')
-
-//->edit_column('transcript_potri.potri_id', '<a target="_blank" href="http://popgenie.org/transcript?id=$1">$1</a>', 'transcript_potri.potri_id') 
-//->edit_column('transcript_atg.atg_id', '<a target="_blank" href="http://atgenie.org/transcript?id=$1">$1</a>', 'transcript_atg.atg_id') ;
-//->unset_column(''.$table_name.'.gene_end') ; 
-;
+	->join('gene_pfam', 'gene_pfam.gene_i=transcript_info.gene_i', 'left');
 
   
 if(isset($sharred_list)){
-$datatables->where('gene_id in ',$sharred_list);	
+    $datatables->where('gene_id in ',$sharred_list);	
 }
 
 if(isset($_POST['id']) && $_POST['id'] != ''){
@@ -87,13 +77,6 @@ if(isset($_POST['id']) && $_POST['id'] != ''){
 	$geneids_array_str=implode('","',$geneids_array);
 	$datatables->where('chromosome_name in ',$geneids_array_str);
 	}
-
-	if(checkprefix($onlyconsonants,"potri")==true   ){
-	$flag=false;
-	$geneids_array = explode(",", $onlyconsonants);
-	$geneids_array_str=implode('","',$geneids_array);
-	$datatables->where('transcript_potri.potri_id in ',$geneids_array_str);
-	}
 	
 	if(checkprefix($onlyconsonants,"atg")==true   ){
 	$flag=false;
@@ -113,8 +96,8 @@ if(isset($_POST['id']) && $_POST['id'] != ''){
 } 	
 
 $intersect_mysql_viscol_keys=array();
-//$mysqlcolumns=array('Gene'=>'ids','Chromosome'=>'chromosome','Source'=>'source','Confidence'=>'confidence','Trinity'=>'trinity_id','PFAM'=>'pfam_ids','GO'=>'go_ids','PFAM-Description'=>'pfam_desc','GO-Description'=>'go_desc');
-$mysqlcolumns=array('Gene'=>'ID','Transcript'=>'transcript_id','Chromosome'=>'chromosome_name','Description'=>'description','Poplar'=>'potri_id','ATG'=>'atg_id','KEGG'=>'kegg_description','ATG Description'=>'atg_description','GO'=>'go_description','PFAM'=>'pfam_description'  );
+
+$mysqlcolumns=array('Gene'=>'ID','Transcript'=>'transcript_id','Chromosome'=>'chromosome_name','Description'=>'description','ATG'=>'atg_id','KEGG'=>'kegg_description','ATG Description'=>'atg_description','GO'=>'go_description','PFAM'=>'pfam_description'  );
 $mysqlcolumns_flipped=array_flip($mysqlcolumns);
 $visColumnsarray = explode(",",$_POST['visColumns']);
 $intersect_mysql_viscol=array_intersect($mysqlcolumns_flipped,$visColumnsarray);

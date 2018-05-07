@@ -62,13 +62,6 @@ $(window).load(function() {
               <input type='text' id='search_description' value='Filter Description' class='search_init text_filter' />
             </th>
 
-
-            <th class=''>
-              <input type='hidden' id='_search_bestblasthit_initVal' value='Filter Best BLAST' />
-              <input type='hidden' id='_search_bestblasthit_index' value='6' />
-              <input type='text' id='search_bestblasthit' value='Filter Best BLAST' class='search_init text_filter' />
-            </th>
-
               <th class=''>
               <input type='hidden' id='_search_ATGSynonyms_initVal' value='Filter ATG Synonyms' />
               <input type='hidden' id='_search_ATGSynonyms_index' value='7' />
@@ -104,7 +97,6 @@ $(window).load(function() {
             <th width="50px;">Transcript</th>
             <th width="20px">Chromosome</th>
             <th width="10px">Description</th>
-            <th width="80%">Poplar Best BLAST</th>
             <th width="80%">ATG Best BLAST</th>
             <th width="80%">KEGG</th>
             <th width="80%">ATG-Description</th>

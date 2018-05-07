@@ -73,12 +73,6 @@ if(isset($_POST['id']) && $_POST['id'] != ''){
 	$datatables->where('chromosome_name in ',$geneids_array_str);
 	}
 
-	if(checkprefix($onlyconsonants,"potri")==true   ){
-	$flag=false;
-	$geneids_array = explode(",", $onlyconsonants);
-	$geneids_array_str=implode('","',$geneids_array);
-	$datatables->where('transcript_potri.potri_id in ',$geneids_array_str);
-	}
 	
 	if(checkprefix($onlyconsonants,"atg")==true   ){
 	$flag=false;
@@ -137,4 +131,3 @@ function str_endswith($source, $suffix) {
 /////////////////////////////////////
 
 ?>
-

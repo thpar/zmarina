@@ -13,21 +13,15 @@ var selectboolean = false;
 var selected_genome="potri";
 var current_species_tmp;
 
+/**
+   @deprecated this function is referenced in some onClick events, but has no functionality.
+*/
 function changedbsource(sel_genome){
 	//setCookie("select_species",sel_genome,10);
 	//$('#poplar_species_select').val(sel_genome).change();
 	//current_species_tmp=sel_genome;
 }
 
-/*if(species_selection!=""){
-	$('input:radio[name="popr"][value='+species_selection+']').attr('checked', true);
-	}else{
-		if(getCookie("select_species") != undefined) {
-		var tmpcookier=getCookie("select_species");
-		$('input:radio[name="popr"][value='+tmpcookie+']').attr('checked', true);
-		}
-
-	}*/
 
 
 //Very cool custom functions
@@ -50,11 +44,7 @@ $.fn.getColumnsShown = function (dTable) {
 function handleAjaxError(xhr, textStatus, error) {
 	 var hm_basic = $("body").wHumanMsg();
     if (textStatus === 'timeout') {
-	/*	hm_basic.wHumanMsg('Sorry! The server took too long to send the data.', {
-                        theme: 'red',
-                        opacity: 1,
-                        displayLength: 200
-                    });*/
+	
     } else {
         hm_basic.wHumanMsg('An error occurred on the server. Please try again in a minute.', {
                         theme: 'red',
@@ -72,8 +62,6 @@ jQuery.fn.dataTableExt.oApi.fnProcessingIndicator = function (oSettings, onoff) 
 };
 
 $(document).ready(function () {
-
-
 
 	 $('#loadexamplebtn').click(function(){
 		 $('#myInputTextField').val("Zosma100g00020,Zosma103g00620,Zosma104g00370,Zosma104g00410,Zosma105g00040,Zosma105g00130,Zosma107g00270,Zosma107g00310,Zosma107g00430,Zosma107g00720,Zosma109g00230,Zosma10g00150");
@@ -200,7 +188,7 @@ $(document).ready(function () {
         'oColVis': {
             'sSize': "100",
             'aiExclude': [0, 1, 2],
-            'buttonText': "<span class='hint--top' aria-label='Add or Remove search columns'><i class='fa fa-table' aria-hidden='true'> </i>Change Table Columns</span>",
+            'buttonText': "<span class='hint--top' aria-label='Add or Remove search columns'><i class='fa fa-table' aria-hidden='true'></i> Change Table Columns</span>",
             'sAlign': 'left',
             "bRestore": true,
             "sRestore": "Restore default values"
@@ -315,22 +303,8 @@ pfam_str += ("<a target='_blank' href='http://pfam.xfam.org/family/"+value.subst
         'oTableTools': {
             "sRowSelect": "multi",
             "sSwfPath": "plugins/genelist/genelist/swf/copy_csv_xls_pdf.swf",
-            'aButtons': [/*{
-                'sExtends': 'copy',
-                'sToolTip': 'Copy table',
-                'sButtonText': 'Copy table'
-            }, */
-
-
-			/*{
-                'sExtends': 'downloadtest',
-                'sToolTip': 'Export table as CSV',
-                'sButtonText': 'Export table as CSV',
-                'sFileName': '*.csv',
-                "sUrl": "plugins/genelist/genelist/services/download.php",
-                "mColumns": "visible"
-            },*/{
-                "sExtends": "ajax",
+            'aButtons': [
+		{"sExtends": "ajax",
                 'sButtonText': '<span class="hint--top" aria-label="Save current search results to active GeneList"><i class="fa fa-floppy-o fa-2x" aria-hidden="true"></i></span>',
 				 titleAttr: 'Add Genes to Active GeneList',
                 "fnClick": function (nButton, oConfig) {
@@ -415,49 +389,6 @@ if(new_gene_list_name == "" || new_gene_list_name == null) {
                     });
                 }
             },
-
-
-            //
-            // {
-            //     "sExtends": "ajax",
-            //     'sButtonText': 'Remove selected from Gene List',
-            //     "fnClick": function (nButton, oConfig) {
-            //
-            //         var searchs = $('#myInputTextField').val(); //this.s.dt.oPreviousSearch.sSearch;
-            //         var columns = this.s.dt.aoPreSearchCols;
-            //         var columnsearch = "";
-            //         var oParams = this.s.dt.oApi._fnAjaxParameters(this.s.dt);
-            //         var numberofgenesrecord = this.s.dt._iRecordsTotal;
-            //
-            //         for (i = 0; i < columns.length; i++) {
-            //             columnsearch += "&filter_" + i + "=" + encodeURIComponent(columns[i].sSearch);
-            //         }
-            //         var finalvar = $.param(oParams) + "&iDisplayLength=" + this.s.dt._iRecordsTotal + "&remove_genes=true&id=" + $('#myInputTextField').val()+"&selected_genome="+$('input[name=popr]:checked').val();;
-            //         $('body').css("cursor", "wait");
-            //         $(nButton).html("Removing genes..<img src='plugins/genelist/genelist/swf/btnloader.GIF' />");
-            //         $.ajax({
-            //             type: "POST",
-            //             url: "plugins/genelist/genelist/services/search_id.php",
-            //             data: (finalvar),
-            //             success: function () {
-            //                 $("#numberofgenesSpan").stop();
-            //                 $("#numberofgenesSpan").effect("transfer", {
-            //                     to: "#deletebasket",
-            //                     className: "ui-effects-transfer-2"
-            //                 }, 1600);
-            //                 updategenebasket();
-            //                 $('body').css("cursor", "auto");
-						// 	$(nButton).html("Remove all from Gene List");
-            //                 $('.checkboxSelector', tblPrueba2.fnGetNodes()).prop('checked', false);
-            //                 selectboolean = false;
-            //             }
-            //
-            //         });
-            //
-            //
-            //     }
-            //
-            // },
 
             {
                 "sExtends": "ajax",
@@ -607,7 +538,7 @@ if(new_gene_list_name == "" || new_gene_list_name == null) {
         }
         //datatables end
     });
-//tblPrueba2.bind('processing',function(e, oSettings, bShow){console.log(bShow)});
+
 var old_number=0;
 var invalid_boolean;
 tblPrueba2.bind('processing',
