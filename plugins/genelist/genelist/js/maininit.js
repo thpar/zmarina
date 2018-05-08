@@ -193,7 +193,7 @@ $(document).ready(function () {
             "bRestore": true,
             "sRestore": "Restore default values"
         },
-        "aoColumns": [{ "bVisible": 0,"aTargets": 0 }, {"aTargets": 1}, {"sWidth": "2px","aTargets": 2}, {"sWidth": "50px","aTargets": 3}, {"sWidth": "10%","aTargets": 4,"bVisible":0}, {"sWidth": "20%","aTargets": 5}, {"sWidth": "10%","bVisible":0,"aTargets": 6}, {"sWidth": "10%","aTargets": 6},{"sWidth": "10%","bVisible":0,"aTargets": 7},{"sWidth": "10%","bVisible":0,"aTargets": 8},{"sWidth": "30%","aTargets": 9},{"sWidth": "40%","aTargets": 10}],
+        "aoColumns": [{ "bVisible": 0,"aTargets": 0 }, {"aTargets": 1}, {"sWidth": "2px","aTargets": 2}, {"sWidth": "50px","aTargets": 3}, {"sWidth": "10%","aTargets": 4,"bVisible":0}, {"sWidth": "20%","aTargets": 5}, {"sWidth": "10%","aTargets": 6},{"sWidth": "10%","bVisible":0,"aTargets": 7},{"sWidth": "10%","bVisible":0,"aTargets": 8},{"sWidth": "30%","aTargets": 9},{"sWidth": "40%","aTargets": 10}],
         "aoColumnDefs": [{
         "fnRender": function (oObj) {
                 if (oObj.aData[1] == true) {
@@ -206,8 +206,8 @@ $(document).ready(function () {
             "bSortable": false
         },
 						 	{
-            "aTargets": [8],
-            "mData": 8,
+            "aTargets": [7],
+            "mData": 7,
 			"sWidth": "100%",
             "mRender": function (data, type, full) {
                 var pfam_str = "";
@@ -228,8 +228,8 @@ pfam_str += ("<a target='_blank' href='http://www.genome.jp/dbget-bin/www_bget?k
 						 
 						 ,
 						 	{
-            "aTargets": [9],
-            "mData": 9,
+            "aTargets": [8],
+            "mData": 8,
 			"sWidth": "100%",
             "mRender": function (data, type, full) {
                 var pfam_str = "";
@@ -248,8 +248,8 @@ pfam_str += ("<a target='_blank' href='http://atgenie.org/gene?id="+value.substr
         },
 						 
 						 	{
-            "aTargets": [10],
-            "mData": 10,
+            "aTargets": [9],
+            "mData": 9,
 			"sWidth": "100%",
             "mRender": function (data, type, full) {
                 var pfam_str = "";
@@ -268,8 +268,8 @@ pfam_str += ("<a target='_blank' href='http://amigo.geneontology.org/cgi-bin/ami
         },
 						  
 						 	{
-            "aTargets": [11],
-            "mData": 11,
+            "aTargets": [10],
+            "mData": 10,
 			"sWidth": "100%",
             "mRender": function (data, type, full) {
                 var pfam_str = "";
