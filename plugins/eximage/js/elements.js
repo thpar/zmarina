@@ -133,7 +133,7 @@ function createlegendholder(w, h) {
 function createlegends(color, name, k) {
     var legend = chanaka.select(document.getElementById("viz")).selectAll("svg").selectAll("g#legend")
         .attr('class', 'legend')
-        .attr("transform", "translate(-200,340)")
+        .attr("transform", "translate(-450,150)")
     legend.append('rect')
         .attr('x', 280)
         .attr('y', 10 + k * 20)
