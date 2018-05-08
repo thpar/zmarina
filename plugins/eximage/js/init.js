@@ -138,7 +138,7 @@ function selectidfromlist(e) {
 //Show tooltips when mouse over
 function show_tooltips(e, t, a) {
     if ((get_zoom > .4 || "" == get_zoom) && ("" == get_zoom && (get_zoom = 1), null != e)) {
-        var l = chanaka.select("body").append("viz").attr("class", "tooltip").style("position", "absolute").style("z-index", "10").style("visibility", "hidden").html(t + '<br>Legend color: <span  style="background-color:' + a + ';width:50px"></span>');
+        var l = chanaka.select("body").append("viz").attr("class", "tooltip").style("position", "absolute").style("z-index", "10").style("visibility", "hidden").html(t + '<br>Legend color: <span style="background-color:' + a + ';width:50px">&nbsp;&nbsp;&nbsp;</span>');
         e.on("mouseover", function() {
             return e.attr("flood-opacity", "0.0"), e.attr("fill-opacity", "0.8"), l.style("visibility", "visible")
         }), e.on("mousemove", function() {
