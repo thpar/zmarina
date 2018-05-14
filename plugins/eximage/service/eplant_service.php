@@ -30,7 +30,7 @@ $resultprobeset = mysql_query("SELECT sample,avg(cast(log2 as decimal(5,4))) as 
 	$resultprobeset = mysql_query("SELECT sample,avg(cast(log2 as decimal(5,4))) as log2 FROM $expression_table WHERE id='$primaryGene' group by sample") or die(mysql_error());
 }
 
-
+$ret = array();
 while ($rowPROBE_ID = mysql_fetch_array($resultprobeset)) {
     $children = new stdClass();
 	$children->sample=$rowPROBE_ID['sample'];
@@ -43,10 +43,10 @@ while ($rowPROBE_ID = mysql_fetch_array($resultprobeset)) {
 #####################################
 //Pass the results as JSON array
 #####################################
-if($ret!=null){
-		$arrsg = array ('popdata'=>$ret);
-}else{
-		$arrsg = array ('popdata'=>$ret,'errorID'=>$popmeGene);
+if(count($ret)!=0){
+	$arrsg = array ('popdata'=>$ret);
+} else{
+	$arrsg = array ('popdata'=>null,'errorID'=>$popmeGene);
 }
 echo json_encode($arrsg);
 
