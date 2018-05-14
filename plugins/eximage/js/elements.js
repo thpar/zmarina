@@ -114,7 +114,7 @@ function createlegendholder(w, h) {
     }
     ////NEW ADDITION START////
     //enable_drag_drop();
-    var legend = chanaka.select(document.getElementById("viz")).selectAll("svg").selectAll("g#legend").call(drag);
+    var legend = chanaka.select(document.getElementById("viz")).selectAll("svg").selectAll("g#legend");
     ////NEW ADDITION END////
     legend.append('text')
         .attr('fill', "black")
