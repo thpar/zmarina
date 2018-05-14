@@ -29,15 +29,15 @@ $resultprobeset = mysql_query("SELECT sample,avg(cast(log2 as decimal(5,4))) as 
 }else{
 	$resultprobeset = mysql_query("SELECT sample,avg(cast(log2 as decimal(5,4))) as log2 FROM $expression_table WHERE id='$primaryGene' group by sample") or die(mysql_error());
 }
-//SELECT sample,avg(cast(log2 as decimal(5,4))) ,rmd,log2fc FROM expression_experiment_2_copy where id ="Eucgr.A00003" group by sample
-$g = 0;
+
+
 while ($rowPROBE_ID = mysql_fetch_array($resultprobeset)) {
-	$children[$g]->sample=$rowPROBE_ID['sample'];
-	$children[$g]->log2=$rowPROBE_ID['log2'];
-	$children[$g]->rmd=$rowPROBE_ID['log2'];
-	$children[$g]->log2fc=$rowPROBE_ID['log2'];
-	$ret[] = $children[$g];
-	$g++;
+    $children = new stdClass();
+	$children->sample=$rowPROBE_ID['sample'];
+	$children->log2=$rowPROBE_ID['log2'];
+	$children->rmd=$rowPROBE_ID['log2'];
+	$children->log2fc=$rowPROBE_ID['log2'];
+	$ret[] = $children;
 }
 
 #####################################
