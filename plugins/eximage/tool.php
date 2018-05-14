@@ -59,7 +59,7 @@ $get_from=trim($_GET['from']);
 
 <!--</head>
 <body    onload="init()"> -->
-<div id="outterbox" style="height:1000px;position:relative">
+<div id="outterbox" style="position:relative">
 
     <div id="download" style="visibility:hidden;right:0px;position:absolute">
     <button class="btn btn-success"  value="" onClick="submit_download_form('svg');">SVG</button>
@@ -262,6 +262,10 @@ $get_from=trim($_GET['from']);
 <!-- Loaded in init.js to display paper reference and image credits -->
 <script id="zostera-credits" type="text/template">
   <style>
+    #externallink2{
+       border: 1px solid gray;
+       padding: 0.5em;
+    }
     #externallink2 div{
         margin-top: 1em;
     }
