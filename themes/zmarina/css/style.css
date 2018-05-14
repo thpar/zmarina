@@ -25,12 +25,10 @@ header {
     opacity: 0.6;
 }
 body {
-    background: #b1ddfa;
     color: #222;
     font: 12px/20px 'open-sans', Georgia, "Times New Roman", Times, serif;
 
     height: 100%;
-    background-color: #b1ddfa;
     margin: 0px;
 }
 
@@ -481,6 +479,8 @@ footer {
     font-size: 12px;
     text-align: center;
     color: #666666 ;
+    border-top: 1px solid gray;
+    padding-top: 0.5em;
 }
 footer a:link,
 a:visited {
