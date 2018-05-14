@@ -258,3 +258,33 @@ $get_from=trim($_GET['from']);
 <script src="<?php print $GLOBALS['base_url']?>/plugins/tour/eplant.js"></script>
 <script src="<?php print $GLOBALS['base_url']?>/plugins/tour/workflow.js"></script>
  </div>
+
+<!-- Loaded in init.js to display paper reference and image credits -->
+<script id="zostera-credits" type="text/template">
+  <style>
+    #externallink2 div{
+        margin-top: 1em;
+    }
+    #externallink2 .authors{
+        font-size: small;
+    }
+  </style>
+  <div>
+    <a target='_blank' href='https://doi.org/10.1038/nature16548'>
+      The genome of the seagrass Zostera marina reveals angiosperm adaptation to the sea.
+    </a>
+    <br>
+    <span class='authors'>
+      Olsen JL, Rouz&eacute; P, Verhelst B, Lin YC et al. The genome of the seagrass Zostera marina reveals angiosperm adaptation to the sea. Nature 2016 Feb 18;530(7590):331-5
+    </span>
+  </div>
+  <div>
+    Flower and spath drawings adapted from:<br>
+    <a href='https://doi.org/10.1016/0304-3770(80)90023-6' target='_blank'>
+      Flowering, pollination and fruiting in Zostera marina L.
+    </a>
+  </div>
+  <div>
+    Zostera plant figure on the left adapted from original artwork by <em>Ivan D. Gromicho</em>
+  </div>
+</script>
