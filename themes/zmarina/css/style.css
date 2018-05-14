@@ -13,7 +13,8 @@ header {
     background: #FFF;
     z-index: 999;
     height:100px;
-    background: #b1ddfa ;
+    border-bottom: 2px solid black;
+    background: #b1ddfa url('../images/zmarina_bg.jpg') no-repeat top right;
 }
 .my-container img {
     position: absolute;
@@ -32,8 +33,11 @@ body {
     background-color: #b1ddfa;
     margin: 0px;
 }
+
+
+
+
 #body_main_div {
-    background: url('../images/zmarina_bg.jpg') no-repeat top right;
     height: 100%
 }
 h1,

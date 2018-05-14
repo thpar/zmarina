@@ -35,7 +35,7 @@
             </div>
          </div>
          <header>
-            <a href="/zosgenie"><img id="logo_img" style="margin-left:8%;padding-top:4px;cursor:pointer;;padding-left:4px;;padding-right:4px;opacity:0.9" src="themes/<?php echo $c['themeSelect']?>/images/logo2.png"/></a>
+            <a href="/zosgenie"><img id="logo_img" style="margin-left:8%;padding-top:24px;cursor:pointer;;padding-left:4px;;padding-right:4px;opacity:0.9" src="themes/<?php echo $c['themeSelect']?>/images/transparant_header.png"/></a>
 <?php    include_once("plugins/autocomplete/autocompletesearch2.php");?> 
          </header>
 
