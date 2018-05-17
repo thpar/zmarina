@@ -93,8 +93,6 @@ def write_entries(entries, db_config, experiment):
 
 
 
-
-    
 @click.command()
 @click.option('-h', '--host', 'db_host',
               required=True,
@@ -127,9 +125,9 @@ def main(db_host, db_user, db_password, db_name, experiment, salmon_file, col_ma
 
     COL_MAP_FILE: 
 
-      A two column tab delimited file with in the first column a sample name and in the 
-      second column the tissue name as it should exist in the database. Multiple samples can be
-      mapped onto the same tissue and will be averaged.
+      A two column tab delimited file with in the first column a sample name as used in the Salmon output 
+      and in the second column the tissue name as it should exist in the database.
+      Multiple samples can be mapped onto the same tissue and will be averaged.
 
       Only columns mentioned in this list will be processed
     '''
