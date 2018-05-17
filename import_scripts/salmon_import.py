@@ -48,7 +48,7 @@ def parse_salmon(salmon_file, col_map):
                 selected_values = [values[n] for n in salmon_cols]
                 avg_value = sum(selected_values) / len(selected_values)
                 entries.append({
-                    'name': name,
+                    'id': name,
                     'sample': tissue,
                     'log2': avg_value
                 })
@@ -81,6 +81,12 @@ def write_entries(entries, db_config, experiment):
     cursor.execute("DROP TABLE IF EXISTS {}".format(table))
     cursor.execute(sql_create_table.format(table))
     
+    for entry in entries:
+        sql_insert = ("INSERT INTO {} "
+                      "  (`id`, `sample`, `log2`) "
+                      "  VALUES ('{}', '{}', '{}')")
+        sql = sql_insert.format(table, entry['id'], entry['sample'], entry['log2'])
+        cursor.execute(sql)
 
     cursor.close()
     cnx.close()
