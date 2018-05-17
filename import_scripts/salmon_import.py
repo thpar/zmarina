@@ -4,6 +4,9 @@ import mysql.connector as myc
 from statistics import mean
 
 def parse_col_map(col_map_file):
+    '''
+    Read salmon sample to db tissue mapping.
+    '''
     col_map = {}
     with open(col_map_file) as col_map_in:
         for line in col_map_in:
@@ -58,14 +61,26 @@ def write_entries(entries, db_config, experiment):
 
     Table name is the experiment prefixed with 'expression_exatlas_'
     '''
-    db_name = 'expression_exatlas_'+experiment
-    print("Writing expression data to {}.{}".format(db_config['host'],db_name))
+    table = 'expression_exatlas_'+experiment
+    print("Writing expression data to {}.{}".format(db_config['host'],table))
 
+    ## Mimicking the existing expression tables a used by _GenIECMS_
+    sql_create_table = ("CREATE TABLE `{}` ("
+                 "  `id` varchar(60) NOT NULL,"
+                 "  `sample` varchar(60) NOT NULL,"
+                 "  `log2` double(20,14) DEFAULT NULL,"
+                 "  `sample_i` mediumint(11) DEFAULT NULL,"
+                 "  `gene_i` mediumint(11) DEFAULT NULL,"
+                 "  KEY `id` (`id`)"
+                 ") ENGINE=MyISAM DEFAULT CHARSET=latin1")
+
+    
     cnx = myc.connect(**db_config)
     cursor = cnx.cursor()
+
+    cursor.execute("DROP TABLE IF EXISTS {}".format(table))
+    cursor.execute(sql_create_table.format(table))
     
-    for e in entries:
-        print(e)
 
     cursor.close()
     cnx.close()
