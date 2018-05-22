@@ -26,10 +26,11 @@ if(isset($post_id) && $post_id != ''){
 }
 //When id is transcript or gene
 if($id_type=="transcript" ||  $id_type=="gene"){
-	$basic_results = mysql_query("SELECT ".$table_name.".*,potri_id,atg_id FROM ".$table_name." 
-	left join transcript_atg on ".$table_name.".transcript_i=transcript_atg.transcript_i
-	left join transcript_potri on ".$table_name.".transcript_i=transcript_potri.transcript_i
-	WHERE ".$table_name.".transcript_id='$post_id' or ".$table_name.".gene_id='$post_id' limit 1");
+	$basic_results = mysql_query("SELECT $table_name.*, atg_id FROM $table_name "
+                                 ."LEFT JOIN transcript_atg ON $table_name.transcript_i = transcript_atg.transcript_i "
+                                 ."WHERE $table_name.transcript_id = '$post_id' "
+                                 ."   OR $table_name.gene_id = '$post_id' "
+                                 ."LIMIT 1");
 	
 	$g = 0;
 	while ($basic_results_rows = mysql_fetch_array($basic_results)) {
@@ -56,7 +57,6 @@ if($id_type=="transcript" ||  $id_type=="gene"){
 		$children[$g]->transcript_start=$basic_results_rows['transcript_start'];
 		$children[$g]->transcript_end=$basic_results_rows['transcript_end'];
 		
-		$children[$g]->potri_id=$basic_results_rows['potri_id'];
 		$children[$g]->atg_id=$basic_results_rows['atg_id'];
 		
 		$children[$g]->input_type=$id_type;
