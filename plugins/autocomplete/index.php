@@ -12,6 +12,6 @@ foreach($mennu_arr as $searched){
 
 if(strtolower(basename(dirname(__FILE__))) == $requested_page && $menu_exist){
 	$c['initialize_tool_plugin']=true;
-	$c['tool_plugin']=$requested_page
+	$c['tool_plugin']=$requested_page;
 }
 ?>
