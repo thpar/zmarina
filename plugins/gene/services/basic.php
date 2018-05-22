@@ -32,37 +32,37 @@ if($id_type=="transcript" ||  $id_type=="gene"){
                                  ."   OR $table_name.gene_id = '$post_id' "
                                  ."LIMIT 1");
 	
-	$g = 0;
 	while ($basic_results_rows = mysql_fetch_array($basic_results)) {
 		$tmp_geneid=$basic_results_rows['gene_id'];
-		$children[$g]->gene_id=$tmp_geneid;		
+
+        $children = new stdClass();
+		$children->gene_id=$tmp_geneid;		
 		$basic_results_tids = mysql_query("SELECT transcript_id FROM ".$table_name." WHERE gene_id='$tmp_geneid'");
 		while ($basic_results_rows_tids = mysql_fetch_array($basic_results_tids)) {
 			if($basic_results_rows_tids['transcript_id']!=$post_id){
 			$tmp_tids.=$basic_results_rows_tids['transcript_id'].' ';
 			}
 		}
-		$children[$g]->transcript_id=$basic_results_rows['transcript_id'];
+		$children->transcript_id=$basic_results_rows['transcript_id'];
 		
-		$children[$g]->other_transcripts=$tmp_tids;
-		$children[$g]->description=$basic_results_rows['description'];
-		$children[$g]->chromosome_name=$basic_results_rows['chromosome_name'];
-		$children[$g]->strand=$basic_results_rows['strand'];
+		$children->other_transcripts=$tmp_tids;
+		$children->description=$basic_results_rows['description'];
+		$children->chromosome_name=$basic_results_rows['chromosome_name'];
+		$children->strand=$basic_results_rows['strand'];
 		
-		$children[$g]->gene_start=$basic_results_rows['gene_start'];
-		$children[$g]->gene_end=$basic_results_rows['gene_end'];
+		$children->gene_start=$basic_results_rows['gene_start'];
+		$children->gene_end=$basic_results_rows['gene_end'];
 		
-		$children[$g]->pac_id=$basic_results_rows['pac_id'];
-		$children[$g]->peptide_name=$basic_results_rows['peptide_name'];
-		$children[$g]->transcript_start=$basic_results_rows['transcript_start'];
-		$children[$g]->transcript_end=$basic_results_rows['transcript_end'];
+		$children->pac_id=$basic_results_rows['pac_id'];
+		$children->peptide_name=$basic_results_rows['peptide_name'];
+		$children->transcript_start=$basic_results_rows['transcript_start'];
+		$children->transcript_end=$basic_results_rows['transcript_end'];
 		
-		$children[$g]->atg_id=$basic_results_rows['atg_id'];
+		$children->atg_id=$basic_results_rows['atg_id'];
 		
-		$children[$g]->input_type=$id_type;
-		$children[$g]->input_id=$post_id;
-		$ret[] = $children[$g];
-		$g++;
+		$children->input_type=$id_type;
+		$children->input_id=$post_id;
+		$ret[] = $children;
 	}
 }
 	
