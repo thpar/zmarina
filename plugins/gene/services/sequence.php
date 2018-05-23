@@ -43,12 +43,7 @@ if($id_type=="transcript" ||  $id_type=="gene"){
 	}
 }
 
-if($strand=="-1"){
-  	$plus_minus="2";  
-   }else{
-	$plus_minus="1"; 
-   }
-
+$plus_minus = ($strand=="-1")? 'minus':'plus';
 
 //config settings will be in $gene_plugin_config
 require_once(realpath(__DIR__.'/../config.php'));
@@ -63,28 +58,28 @@ $protein_path = $dataset_paths['protein_blast_dataset_path'];
 $line_length = 1000000000000000000;
 
 //extract genomic sequence
-exec("$blastdbcmd -d  '$genomic_path' -L'$gene_start,$gene_end' -S '$plus_minus' -l $line_length -s '$chromosome_name' -D 0;", $outputr);
+exec("$blastdbcmd -db  '$genomic_path' -range $gene_start-$gene_end -strand $plus_minus -line_length $line_length -entry $chromosome_name", $outputr);
 
-for ($xd = 1; $xd <= count($outputr); $xd++) {
+for ($xd = 1; $xd < count($outputr); $xd++) {
 	$genomic_sequence.=$outputr[$xd];
 }
 
 //extract cds sequence
-exec("$blastdbcmd -l $line_length -t T  -d '$cds_path' -s '$transcript_id'  -D 0;", $outputcds);
+exec("$blastdbcmd -line-length $line_length -target_only -db $cds_path -entry $transcript_id", $outputcds);
 
-for ($xcds = 1; $xcds <= count($outputcds); $xcds++) {
+for ($xcds = 1; $xcds < count($outputcds); $xcds++) {
 	$cds_sequence.=$outputcds[$xcds];
 }
 
  //extract transcript sequence
-exec("$blastdbcmd -l $line_length -t T  -d '$transcript_path' -s '$transcript_id'  -D 0;", $outputtranscript);
-for ($xtranscript = 1; $xtranscript <= count($outputtranscript); $xtranscript++) {
+exec("$blastdbcmd -line_length $line_length -target_only -db $transcript_path -entry $transcript_id", $outputtranscript);
+for ($xtranscript = 1; $xtranscript < count($outputtranscript); $xtranscript++) {
 	$sequencetranscriptstr.=$outputtranscript[$xtranscript];
 }
 
  //extract protein sequence
-exec("$blastdbcmd -l $line_length -t T  -d '$protein_path' -s '$transcript_id'  -D 0;", $outputprotein);
-for ($xprotein = 1; $xprotein <= count($outputprotein); $xprotein++) {
+exec("$blastdbcmd -line_length $line_length -target_only -db $protein_path -entry $transcript_id", $outputprotein);
+for ($xprotein = 1; $xprotein < count($outputprotein); $xprotein++) {
 	$sequenceproteinstr.=$outputprotein[$xprotein];
 }
 
