@@ -51,7 +51,7 @@ if($strand=="-1"){
 
 
 //config settings will be in $gene_plugin_config
-require_once(realpath(__DIR__.'../config.php'));
+require_once(realpath(__DIR__.'/../config.php'));
 $dataset_paths=$gene_plugin_config['datasets'];
 $blastdbcmd = $gene_plugin_config['blastdbcmd'];
 
@@ -61,7 +61,6 @@ $transcript_path = $dataset_paths['transcript_blast_dataset_path'];
 $protein_path = $dataset_paths['protein_blast_dataset_path'];
 
 $line_length = 1000000000000000000;
-
 
 //extract genomic sequence
 exec("$blastdbcmd -d  '$genomic_path' -L'$gene_start,$gene_end' -S '$plus_minus' -l $line_length -s '$chromosome_name' -D 0;", $outputr);
