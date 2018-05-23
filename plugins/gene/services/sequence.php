@@ -49,49 +49,42 @@ if($strand=="-1"){
 	$plus_minus="1"; 
    }
 
-$config_path = file_get_contents("../config.json");
-$json_path = json_decode($config_path, true);
-$replacements=$json_path['datasets'];
 
-for($j=0;$j<count($replacements);$j++){
-		if($replacements[$j]['genome_blast_dataset_path']!=null){
-		$genomic_path_variable=$replacements[$j]['genome_blast_dataset_path'];
-		}
-		if($replacements[$j]['cds_blast_dataset_path']!=null){
-		$cds_path_variable=$replacements[$j]['cds_blast_dataset_path'];
-		}
-		if($replacements[$j]['transcript_blast_dataset_path']!=null){
-		$transcript_path_variable=$replacements[$j]['transcript_blast_dataset_path'];
-		}
-		if($replacements[$j]['protein_blast_dataset_path']!=null){
-		$protein_path_variable=$replacements[$j]['protein_blast_dataset_path']; 
-		}
-	}
+//config settings will be in $gene_plugin_config
+require_once(realpath(__DIR__.'../config.php'));
+$dataset_paths=$gene_plugin_config['datasets'];
+$blastdbcmd = $gene_plugin_config['blastdbcmd'];
+
+$genomic_path = $dataset_paths['genome_blast_dataset_path'];
+$cds_path = $dataset_paths['cds_blast_dataset_path'];
+$transcript_path = $dataset_paths['transcript_blast_dataset_path'];
+$protein_path = $dataset_paths['protein_blast_dataset_path'];
+
+$line_length = 1000000000000000000;
+
 
 //extract genomic sequence
-$picea_basic_end2="10000000000";
-//echo "fastacmd -d  '$genomic_path_variable' -L'".$gene_start.','.$gene_end."' -S '".$plus_minus."'  -l 1000000000000000000 -s '".$chromosome_name."' -D 0;"; 
-exec("fastacmd -d  '$genomic_path_variable' -L'".$gene_start.','.$gene_end."' -S '".$plus_minus."'  -l 1000000000000000000 -s '".$chromosome_name."' -D 0;",$outputr);
+exec("$blastdbcmd -d  '$genomic_path' -L'$gene_start,$gene_end' -S '$plus_minus' -l $line_length -s '$chromosome_name' -D 0;", $outputr);
 
 for ($xd = 1; $xd <= count($outputr); $xd++) {
 	$genomic_sequence.=$outputr[$xd];
 }
 
 //extract cds sequence
-exec("fastacmd -l 1000000000000000000 -t T  -d '$cds_path_variable' -s '".$transcript_id."'  -D 0;",$outputcds);
+exec("$blastdbcmd -l $line_length -t T  -d '$cds_path' -s '$transcript_id'  -D 0;", $outputcds);
 
 for ($xcds = 1; $xcds <= count($outputcds); $xcds++) {
 	$cds_sequence.=$outputcds[$xcds];
 }
 
  //extract transcript sequence
- exec("fastacmd -l 1000000000000000000 -t T  -d '$transcript_path_variable' -s '".$transcript_id."'  -D 0;",$outputtranscript);
+exec("$blastdbcmd -l $line_length -t T  -d '$transcript_path' -s '$transcript_id'  -D 0;", $outputtranscript);
 for ($xtranscript = 1; $xtranscript <= count($outputtranscript); $xtranscript++) {
 	$sequencetranscriptstr.=$outputtranscript[$xtranscript];
 }
 
  //extract protein sequence
-exec("fastacmd -l 1000000000000000000 -t T  -d '$protein_path_variable' -s '".$transcript_id."'  -D 0;",$outputprotein);
+exec("$blastdbcmd -l $line_length -t T  -d '$protein_path' -s '$transcript_id'  -D 0;", $outputprotein);
 for ($xprotein = 1; $xprotein <= count($outputprotein); $xprotein++) {
 	$sequenceproteinstr.=$outputprotein[$xprotein];
 }
@@ -104,7 +97,7 @@ $datasignaltranscriptend=$gene_end;
 if($strand=="-1" || $strand=="-"){$tmpstrand="-";}else{$tmpstrand="+";}
 
 				if($tmpstrand=="-"){ 
-				     $genepagecordintionquery = mysql_query("select feature,start_point,end_point from ".$cordinatestable." where id='$transcript_id' AND feature !='exon' AND feature !='mRNA'  AND feature !='intraon' order by end_point DESC") or die(mysql_error()); //Chanaka removed by 6th of March  order by start_point DESC;
+				     $genepagecordintionquery = mysql_query("select feature,start_point,end_point from ".$cordinatestable." where id='$transcript_id' AND feature !='exon' AND feature !='mRNA'  AND feature !='intraon' order by end_point DESC") or die(mysql_error()); 
 				}else{
 				     $genepagecordintionquery = mysql_query("select feature,start_point,end_point from ".$cordinatestable." where id='$transcript_id' AND feature !='exon' AND feature !='mRNA' AND feature !='intron'  order by start_point ASC;") or die(mysql_error());					
 				}
