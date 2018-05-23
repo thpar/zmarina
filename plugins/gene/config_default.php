@@ -1,4 +1,9 @@
 <?php
+/**
+   Gene plugin specific configuration.
+   Make a copy of this file to `config.php` before filling out the values.
+*/
+
 $gene_plugin_config = array(
 
     /**
