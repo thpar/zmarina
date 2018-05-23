@@ -2,6 +2,7 @@ data
 scripts
 genie_files
 plugins/settings.php
+plugins/**/config.php
 analyses
 screencasts
 *~
