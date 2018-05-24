@@ -15,6 +15,11 @@ $gene_plugin_config = array(
         'transcript_blast_dataset_path' => '',
         'protein_blast_dataset_path' => ''
     ),
+    /**
+       The BLAST DB's are expected to contain transcript id's.
+       When using gene id's, set this option to false.
+     */
+    'transcript_id' => true,
 
     /**
        Location of the blastdbcmd executable
