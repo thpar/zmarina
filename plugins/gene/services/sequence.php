@@ -55,30 +55,29 @@ $cds_path = $dataset_paths['cds_blast_dataset_path'];
 $transcript_path = $dataset_paths['transcript_blast_dataset_path'];
 $protein_path = $dataset_paths['protein_blast_dataset_path'];
 
-$line_length = 1000000000000000000;
 
 //extract genomic sequence
-exec("$blastdbcmd -db  '$genomic_path' -range $gene_start-$gene_end -strand $plus_minus -line_length $line_length -entry $chromosome_name", $outputr);
+exec("$blastdbcmd -db  '$genomic_path' -range $gene_start-$gene_end -strand $plus_minus -entry $chromosome_name", $outputr);
 
 for ($xd = 1; $xd < count($outputr); $xd++) {
 	$genomic_sequence.=$outputr[$xd];
 }
 
 //extract cds sequence
-exec("$blastdbcmd -line-length $line_length -target_only -db $cds_path -entry $transcript_id", $outputcds);
+exec("$blastdbcmd -target_only -db $cds_path -entry $transcript_id", $outputcds);
 
 for ($xcds = 1; $xcds < count($outputcds); $xcds++) {
 	$cds_sequence.=$outputcds[$xcds];
 }
 
  //extract transcript sequence
-exec("$blastdbcmd -line_length $line_length -target_only -db $transcript_path -entry $transcript_id", $outputtranscript);
+exec("$blastdbcmd -target_only -db $transcript_path -entry $transcript_id", $outputtranscript);
 for ($xtranscript = 1; $xtranscript < count($outputtranscript); $xtranscript++) {
 	$sequencetranscriptstr.=$outputtranscript[$xtranscript];
 }
 
  //extract protein sequence
-exec("$blastdbcmd -line_length $line_length -target_only -db $protein_path -entry $transcript_id", $outputprotein);
+exec("$blastdbcmd -target_only -db $protein_path -entry $transcript_id", $outputprotein);
 for ($xprotein = 1; $xprotein < count($outputprotein); $xprotein++) {
 	$sequenceproteinstr.=$outputprotein[$xprotein];
 }
