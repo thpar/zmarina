@@ -142,14 +142,20 @@ function get_basic_info(id){
 
 //Sequence information
 function downloadInnerHtml(filename, elId, mimeType) {
-	 var header = document.getElementById(elId+"_pre").textContent;
-    var sequence = document.getElementById(elId).textContent;
-    var link = document.createElement('a');
-    mimeType = mimeType || 'text/plain';
+    var header = document.getElementById(elId+"_pre").textContent; //header seems to contain header+sequence
 
-    link.setAttribute('download', filename);
-    link.setAttribute('href', 'data:' + mimeType + ';charset=utf-8,' + encodeURIComponent(header+sequence));
+    mimeType = mimeType || 'text/plain';
+    var blob = new Blob([header], {'type': mimeType});
+    var url = window.URL.createObjectURL(blob);
+
+    var link = document.createElement('a');
+    document.body.appendChild(link);
+    
+    link.href = url;
+    link.download = filename;
     link.click();
+    window.URL.revokeObjectURL(url);
+    document.body.removeChild(link);
 }
 
 
