@@ -76,10 +76,6 @@
    
     <input style="float: right;cursor:pointer;" value="BLAST" onClick="send_to_blast('genome');" class="form-submit" type="button"></input>
     
-<!--<input style="float: right;cursor:pointer;" type="submit"  name="op" id="edit-GALAXY" value="BLAST" class="form-submit"><br />  <br />
- <input id="sid" height="0" width="0" type="hidden" name="sid" value="<?php echo $ResultArray['Chromosome_Name'];?>"/>
- <input id="command_executed" height="0" width="0" type="hidden" name="command_executed" value="<?php echo $genome_command_executed;?>"/>
-<input id="type" height="0" width="0" type="hidden" name="type" value="genomic"/> -->
 <br></br>
 </form>
 
@@ -92,24 +88,6 @@
  
      <input style="float: right;cursor:pointer;" value="BLAST" onClick="send_to_blast('cds');" class="form-submit" type="button"></input>
 
-<!-- 
-<input style="float: right;cursor:pointer;" type="submit"  name="op" id="edit-GALAXY" value="BLAST" class="form-submit"><br />  <br /> 
- <input id="sid" height="0" width="0" type="hidden" name="sid" value="<?php echo $current_path;?>"/>
-  <input id="command_executed" height="0" width="0" type="hidden" name="command_executed" value="<?php echo $cds_command_executed;?>"/>
-<input id="type" height="0" width="0" type="hidden" name="type" value="cds"/>-->
-
-
-<!--    
-<input style="float: right;cursor:pointer;" type="submit"  name="op" id="edit-GALAXY" value="BLAST" class="form-submit"><br />  <br /> 
- <input id="sid" height="0" width="0" type="hidden" name="sid" value="<?php echo $current_path;?>"/>
-  <input id="command_executed" height="0" width="0" type="hidden" name="command_executed" value="<?php echo $transcript_command_executed;?>"/>
-<input id="type" height="0" width="0" type="hidden" name="type" value="transcript"/> -->
-
-
-<!-- <input style="float: right;cursor:pointer;" type="submit"  name="op" id="edit-GALAXY" value="BLAST" class="form-submit"><br />  <br /> 
-   <input id="sid" height="0" width="0" type="hidden" name="sid" value="<?php echo $current_path;?>"/>
-    <input id="command_executed" height="0" width="0" type="hidden" name="command_executed" value="<?php echo $protein_command_executed;?>"/>
-<input id="type" height="0" width="0" type="hidden" name="type" value="protein"/>-->
 <br></br>
 </form>
 
