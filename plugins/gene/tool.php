@@ -73,9 +73,6 @@
      <form action="blast" method="post">
    <pre id="genomicsequencediv_pre"><span id="genomic_number"></span><br></n></r><span  id="genomicsequencediv" style="white-space: pre-wrap; white-space: -moz-pre-wrap;white-space: -pre-wrap;word-wrap: break-word;word-break: break-all;white-space: pre-wrap;width: 900px; height: auto; word-wrap: break-word;"><?php echo trim($outputrs);?></span></pre>
    <input style="cursor:pointer;float: right; " type="button"  value="FASTA" onclick="downloadInnerHtml('genomic_sequence.txt', 'genomicsequencediv','text/html');" class="form-submit"><span style="width:16px;float: right; ">&nbsp;&nbsp;&nbsp;</span>
-   
-    <input style="float: right;cursor:pointer;" value="BLAST" onClick="send_to_blast('genome');" class="form-submit" type="button"></input>
-    
 <br></br>
 </form>
 
@@ -86,8 +83,6 @@
 #AABADD;"></span></pre>
  <input style="cursor:pointer;float: right; " type="button"  value="FASTA" onclick="downloadInnerHtml('cds_sequence.txt', 'cdssequencediv','text/html');" class="form-submit"><span style="width:16px;float: right; ">&nbsp;&nbsp;&nbsp;</span>
  
-     <input style="float: right;cursor:pointer;" value="BLAST" onClick="send_to_blast('cds');" class="form-submit" type="button"></input>
-
 <br></br>
 </form>
 
@@ -97,9 +92,6 @@
    <pre id="transcriptequencediv_pre"><span id="transcript_number"></span><br /><span  id="transcriptequencediv" style="white-space: pre-wrap; white-space: -moz-pre-wrap;white-space: -pre-wrap;word-wrap: break-word;word-break: break-all;white-space: pre-wrap;width: 900px; height: auto; word-wrap: break-word;""></span></pre>
     <input style="cursor:pointer;float: right; " type="button"  value="FASTA" onclick="downloadInnerHtml('transcript_sequence.txt', 'transcriptequencediv','text/html');" class="form-submit"><span style="width:16px;float: right; ">&nbsp;&nbsp;&nbsp;</span>
     
-         <input style="float: right;cursor:pointer;" value="BLAST" onClick="send_to_blast('transcript');" class="form-submit" type="button"></input>
-
-
 <br></br>
 </form> 
 
@@ -108,10 +100,7 @@
 <form action="blast" method="post">
    <pre id="proteinsequencediv_pre"><span id="protein_number"></span><br /><span  id="proteinsequencediv" style="white-space: pre-wrap; white-space: -moz-pre-wrap;white-space: -pre-wrap;word-wrap: break-word;word-break: break-all;white-space: pre-wrap;width: 900px; height: auto; word-wrap: break-word;"></span></pre>
       <input style="cursor:pointer;float: right; " type="button"  value="FASTA" onclick="downloadInnerHtml('protein_sequence.txt', 'proteinsequencediv','text/html');" class="form-submit"><span style="width:16px;float: right; ">&nbsp;&nbsp;&nbsp;</span>
-      
-           <input style="float: right;cursor:pointer;" value="BLAST" onClick="send_to_blast('protein');" class="form-submit" type="button"></input>
-
-      
+     
 <br></br>
 
 </form>
