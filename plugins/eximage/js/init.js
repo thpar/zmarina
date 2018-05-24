@@ -171,8 +171,18 @@ function readTable(e) {
 }
 
 //Save as CSV file
-function saveFile(e) {
-    "Microsoft Internet Explorer" != navigator.appName ? window.open("data:text/csv;charset=utf-8," + escape(e)) : window.open("", "csv", "").document.body.innerHTML = "<pre>" + e + "</pre>"
+function saveFile(content) {
+    var blob = new Blob([content], {'type': 'text/csv',
+				    'endings': 'native'}
+		       );
+    const a = document.createElement('a');
+    document.body.appendChild(a);
+    url = window.URL.createObjectURL(blob);
+    a.href = url;
+    a.download = "expression.csv";
+    a.click();
+    window.URL.revokeObjectURL(url);
+    document.body.removeChild(a);
 }
 
 //Enable drag and drop samples if needed
