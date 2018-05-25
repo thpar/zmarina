@@ -10,7 +10,7 @@
 <br />
 <?php  
 
-include_once(realpath(__DIR__.'/help/Parsedown.php'));
+include_once(realpath(__DIR__.'/Parsedown.php'));
 $Parsedown = new Parsedown();
 
 require_once(realpath(__DIR__.'/config.php'));
