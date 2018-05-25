@@ -258,7 +258,7 @@ pfam_str += ("<a target='_blank' href='http://atgenie.org/gene?id="+value.substr
                     $.each(tmppfamArray, function (key, value) {
                         var endstr;
                         (key % 2 != 0) ? (endstr = "<br>") : ((key == tmppfamArray.length - 1) ? endstr = "" : endstr = "<br>")
-pfam_str += ("<a target='_blank' href='http://amigo.geneontology.org/cgi-bin/amigo/term_details?term="+value.substr(0,value.indexOf('-')) + "'>" + value.substr(0,value.indexOf('-')) + "</a>-"+value.substr(value.indexOf('-')+1)+""+ endstr);
+pfam_str += ("<a target='_blank' href='http://amigo.geneontology.org/amigo/term/"+value.substr(0,value.indexOf('-')) + "'>" + value.substr(0,value.indexOf('-')) + "</a>-"+value.substr(value.indexOf('-')+1)+""+ endstr);
                     });
                 } else {
                     pfam_str = "";
