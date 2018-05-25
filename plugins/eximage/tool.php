@@ -93,7 +93,7 @@ $get_from=trim($_GET['from']);
 
 
 
-<form id="svgform" method="post" action="http://spruce.plantphys.umu.se/cDNAeFP/download.pl">
+<form id="svgform" method="post" action="plugins/eximage/download.php">
 <input type="hidden" id="output_format" name="output_format" value="">
 <input type="hidden" id="data" name="data" value="">
 </form>
