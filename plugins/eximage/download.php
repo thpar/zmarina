@@ -22,13 +22,14 @@ if ($format == 'svg'){
     header('Content-Type: '.$mime_type);
     header('Content-Disposition: attachment; '."filename=$output_file");    
 
-    $svg_convert = "module load librsvg; rsvg-convert";
+    require_once(realpath(__DIR__.'/config.php'));
+    $rsvg_convert = $eximage_plugin_config['rsvg-convert'];
     
     $tmp_svg = tmpfile();
     fwrite($tmp_svg, $svg_xml);
     $tmp_svg_path = stream_get_meta_data($tmp_svg)['uri'];
         
-    passthru("$svg_convert "
+    passthru("$rsvg_convert "
            . "--background-color white "
            . "-z $zoom "
            . "-f $format "
