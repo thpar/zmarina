@@ -24,7 +24,7 @@ $gene_plugin_config = array(
     /**
        Location of the blastdbcmd executable
      */
-    'blastdbcmd' => ''
+    'blastdbcmd' => 'blastdbcmd'
 );
 
 ?>
