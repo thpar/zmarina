@@ -8,19 +8,36 @@ if ($format == 'svg'){
     header('Content-Type: image/svg+xml');
     header('Content-Disposition: attachment; filename="zostera.svg"');
     print($svg_xml);
-} elseif ($format == 'pdf'){
-    header('Content-Type: application/x-pdf');
-    header('Content-Disposition: attachment; filename="zostera.pdf"');
+} else {
+    if ($format == 'pdf'){
+        $mime_type = 'application/x-pdf';
+        $output_file = "zostera.pdf";
+        $zoom = 1;
+    } elseif ($format == 'png'){
+        $mime_type = 'image/png';
+        $output_file = "zostera.png";
+        $zoom = 4;
+    }
 
-    //$pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
-    //$pdf->AddPage();
-    //$pdf->ImageSVG('@' . $svg_xml, 15, 30, '', '', '', '', '', 1, false);
-    //$pdf->Write(0, $txt='', '', 0, 'L', true, 0, false, false, 0);
-    print($pdf);
-} elseif ($format == 'png'){
-    header('Content-Type: image/png');
-    header('Content-Disposition: attachment; filename="zostera.png"');
+    header('Content-Type: '.$mime_type);
+    header('Content-Disposition: attachment; '."filename='$output_file'");    
+
+    $svg_convert = "module load librsvg; rsvg-convert";
+    
+    $tmp_svg = tmpfile();
+    frwite($tmp_svg, $svg_xml);
+    $tmp_svg_path = stream_get_meta_data($tmp_svg)['uri'];
+        
+    passthru("$svg_convert "
+           . "--background-color white "
+           . "-z $zoom "
+           . "-f $format "
+           . "$tmp_svg_path");
+
+    fclose($tmp_svg);
+    
 }
+
 
 
 ?>
