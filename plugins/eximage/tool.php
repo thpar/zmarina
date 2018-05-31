@@ -188,12 +188,16 @@ $get_from=trim($_GET['from']);
    <button id="startTourBtn" style=" width:100%;background-color:#F90;border-color:#F90;color:#000"  class="btn btn-large btn-primary">Take a Tour</button><br><br>
 
 
-      <div id="datasourcediv">
-<input onChange="changeview('experiment_1');" type="radio"  id="experiment_1" name="datasource" class="radio" checked="checked" />
-<label style="font-style:italic;" for="experiment_1">Transcriptome tissues</label>
-
-<input onChange="changeview('experiment_2');" type="radio"  id="experiment_2" name="datasource" class="radio" />
-<label style="font-style:italic;" for="experiment_2">Transcriptome locations/stress</label></div>
+   <div id="datasourcediv">
+     <div>
+       <input onChange="changeview('experiment_1');" type="radio"  id="experiment_1" name="datasource" class="radio" checked="checked" />
+       <label style="font-style:italic;" for="experiment_1">Transcriptome tissues</label>
+     </div>
+     <div>
+       <input onChange="changeview('experiment_2');" type="radio"  id="experiment_2" name="datasource" class="radio" />
+       <label style="font-style:italic;" for="experiment_2">Transcriptome locations/stress</label>
+     </div>
+   </div>
 
 </br></br>
 
