@@ -98,7 +98,7 @@ function tabulate(data, columns) {
 }
 
 //Create main legend holder(g) to root SVG
-function createlegendholder(w, h) {
+function createlegendholder(w, h, gene_name) {
     var rootsvg = chanaka.select(document.getElementById("viz")).selectAll("svg")
     rootsvg.selectAll("g#legend").remove();
     var legend_g = rootsvg.append("g")
@@ -112,10 +112,22 @@ function createlegendholder(w, h) {
     } else {
         logscale = "TPM Normalized expression";
     }
-    ////NEW ADDITION START////
-    //enable_drag_drop();
+    
     var legend = chanaka.select(document.getElementById("viz")).selectAll("svg").selectAll("g#legend");
-    ////NEW ADDITION END////
+
+    legend.append('text')
+        .attr('fill', "black")
+        .attr("font-size", "15px")
+        .attr("font-style", "normal")
+        .attr("font-variant", "normal")
+        .attr("font-weight", "bold")
+        .attr("text-rendering", "optimizeLegibility")
+        .attr("shape-rendering", "default")
+        .attr("font-family", "sans-serif")
+        .text(private_id)
+        .attr('x', 280)
+        .attr('y',-25);
+
     legend.append('text')
         .attr('fill', "black")
         .attr("font-size", "15px")
