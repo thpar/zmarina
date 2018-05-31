@@ -190,7 +190,10 @@ $get_from=trim($_GET['from']);
 
       <div id="datasourcediv">
 <input onChange="changeview('experiment_1');" type="radio"  id="experiment_1" name="datasource" class="radio" checked="checked" />
-<label style="font-style:italic;" for="experiment_1">Full transcriptome of four tissues</label></div>
+<label style="font-style:italic;" for="experiment_1">Transcriptome tissues</label>
+
+<input onChange="changeview('experiment_2');" type="radio"  id="experiment_2" name="datasource" class="radio" />
+<label style="font-style:italic;" for="experiment_2">Transcriptome locations/stress</label></div>
 
 </br></br>
 
