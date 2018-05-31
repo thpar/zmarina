@@ -78,7 +78,7 @@ $get_from=trim($_GET['from']);
     <button class="btn btn-success" style="width:100%" id="save_as_png"  onClick="readTable('hor-minimalist-a');">CSV</button>
 	</div>
 </div>
-<div id="externallink" style="float:left;margin-top:-16px;left:0px;font-size:16px;color:#666;position:absolute">exImage for high throughput sequencing <a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE67579" target="_blank" ><i>Zostera marina</i></a></div>
+
 <button class="menu-button" id="open-button">Open Menu</button>
 
 <div   style="background:#FFF"  align="center"  id="viz"></div>
@@ -280,6 +280,9 @@ $get_from=trim($_GET['from']);
         font-size: small;
     }
   </style>
+  <div>
+        exImage for high throughput sequencing <a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE67579" target="_blank" ><i>Zostera marina</i></a>
+  </div>
   <div>
     <a target='_blank' href='https://doi.org/10.1038/nature16548'>
       The genome of the seagrass Zostera marina reveals angiosperm adaptation to the sea.

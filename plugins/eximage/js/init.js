@@ -83,7 +83,7 @@ function retrievedata() {
         if (null == (a = t).popdata) return errorboolean = !0, void callerror();
         if (errorboolean = !1, 
         		"experiment_1" == private_view && (document.getElementById("externallink2").innerHTML = $('#zostera-credits').html()), 
-        		"experiment_2" == private_view && (document.getElementById("externallink2").innerHTML = "<a target='_blank' href='http://plantgenie.org'>To be published when EucGenIE launches in PlantGenIE</a><br>"),
+        		"experiment_2" == private_view && (document.getElementById("externallink2").innerHTML = ""),
         		"experiment_3" == private_view && (document.getElementById("externallink2").innerHTML = "<a target='_blank' href='http://dx.doi.org/10.1111/nph.13152'><FONT size='2px'>Investigating the molecular underpinnings underlying morphology and changes in carbon partitioning during tension wood formation in Eucalyptus</a><br>Eshchar Mizrachi, Victoria J. Maloney, Janine Silberbauer, Charles A. Hefer, Dave K. Berger, Shawn D. Mansfield and Alexander A. Myburg</FONT>"),
         		"experiment_4" == private_view && (document.getElementById("externallink2").innerHTML = ""), 
         		"phytophthora_cinnamomi" != private_view && "leptocybe_invasa" != private_view && "chrysoporthe_austroafricana" != private_view || 
