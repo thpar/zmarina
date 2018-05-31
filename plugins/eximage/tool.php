@@ -272,6 +272,7 @@ $get_from=trim($_GET['from']);
     #externallink2{
        border: 1px solid gray;
        padding: 0.5em;
+       margin-top:1em;
     }
     #externallink2 div{
         margin-top: 1em;
