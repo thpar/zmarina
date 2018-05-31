@@ -81,7 +81,7 @@ $get_from=trim($_GET['from']);
 
 <button class="menu-button" id="open-button">Open Menu</button>
 
-<div   style="background:#FFF"  align="center"  id="viz"></div>
+<div   style="background:#FFF"  align="left"  id="viz"></div>
 
 <div id="sample_holder" style="width:200px;height:100%;left:0px;border:rgb(199, 198, 198) 1px solid;top:0px;position:absolute;z-index:9999;background:#f8f8f8;display:none" class="connectedSortable">
 <button class="close-button" id="close-button">Close Menu</button>
