@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import click
 import mysql.connector as myc
-from statistics import mean
+from math import log2
 
 def parse_col_map(col_map_file):
     '''
@@ -50,7 +50,7 @@ def parse_salmon(salmon_file, col_map):
                 entries.append({
                     'id': name,
                     'sample': tissue,
-                    'log2': avg_value
+                    'log2': log2(avg_value)
                 })
     return entries
 
