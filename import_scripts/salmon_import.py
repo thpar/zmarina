@@ -16,7 +16,7 @@ def parse_col_map(col_map_file):
     return col_map
 
 
-def parse_salmon(salmon_file, col_map):
+def parse_salmon(salmon_file, col_map, take_log):
     '''
     Iterate over the salmon file and average expression values for each gene per tissue.
 
@@ -25,6 +25,10 @@ def parse_salmon(salmon_file, col_map):
 
     :return list: list of dicts containing gene name, tissue (sample) name and averaged expression value
     '''
+    print("Parsing salmon data")
+    if take_log:
+        print("Taking averaged log2 values")
+        
     with open(salmon_file) as salmon:
         header = salmon.readline().strip().split()[3:]
         
@@ -47,10 +51,11 @@ def parse_salmon(salmon_file, col_map):
                 salmon_cols = tissue_map[tissue]
                 selected_values = [values[n] for n in salmon_cols]
                 avg_value = sum(selected_values) / len(selected_values)
+                log_avg_value = log2(avg_value) if avg_value > 0 else 0
                 entries.append({
                     'id': name,
                     'sample': tissue,
-                    'log2': log2(avg_value)
+                    'log2': log_avg_value if take_log else avg_value
                 })
     return entries
 
@@ -110,11 +115,14 @@ def write_entries(entries, db_config, experiment):
 @click.option('-e', '--experiment', 'experiment',
               required=True,
               help='Experiment name (a table based on this name will be used/created)')
+@click.option('-l', '--log2', 'take_log',
+              is_flag=True,
+              help='Take the log2 of the averaged TPM values')
 @click.argument('salmon_file',
                 type=click.Path(exists=True))
 @click.argument('col_map_file',
                 type=click.Path(exists=True))
-def main(db_host, db_user, db_password, db_name, experiment, salmon_file, col_map_file):
+def main(db_host, db_user, db_password, db_name, experiment, take_log, salmon_file, col_map_file):
     '''
     Read a salmon file, merge the experimenty replicates, and write the resulting 
     entries to the database.
@@ -138,7 +146,7 @@ def main(db_host, db_user, db_password, db_name, experiment, salmon_file, col_ma
         'database': db_name
     }
     col_map = parse_col_map(col_map_file)
-    entries = parse_salmon(salmon_file, col_map)
+    entries = parse_salmon(salmon_file, col_map, take_log)
     
     write_entries(entries, db_config, experiment)
 
