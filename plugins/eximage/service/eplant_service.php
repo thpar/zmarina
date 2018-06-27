@@ -25,9 +25,9 @@ mysql_select_db($selected_database) or die(mysql_error());
 //Extract expression values related to given gene id
 #####################################
 if($view=="phytophthora_cinnamomi" || $view=="experiment_1"){
-$resultprobeset = mysql_query("SELECT sample,avg(cast(log2 as decimal(5,4))) as log2 FROM $expression_table WHERE id='$primaryGene' group by sample union select CONCAT('exatlas_',sample),avg(cast(log2 as decimal(5,4))) as log2 from exatlas_summary where id='$primaryGene' group by sample;")	or die(mysql_error());
+$resultprobeset = mysql_query("SELECT sample,avg(cast(log2 as decimal(6,4))) as log2 FROM $expression_table WHERE id='$primaryGene' group by sample union select CONCAT('exatlas_',sample),avg(cast(log2 as decimal(6,4))) as log2 from exatlas_summary where id='$primaryGene' group by sample;")	or die(mysql_error());
 }else{
-	$resultprobeset = mysql_query("SELECT sample,avg(cast(log2 as decimal(5,4))) as log2 FROM $expression_table WHERE id='$primaryGene' group by sample") or die(mysql_error());
+	$resultprobeset = mysql_query("SELECT sample,avg(cast(log2 as decimal(6,4))) as log2 FROM $expression_table WHERE id='$primaryGene' group by sample") or die(mysql_error());
 }
 
 $ret = array();
