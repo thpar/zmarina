@@ -27,7 +27,7 @@ def parse_salmon(salmon_file, col_map, take_log):
     '''
     print("Parsing salmon data")
     if take_log:
-        print("Taking averaged log2 values")
+        print("Taking averaged log2(x+1) values")
         
     with open(salmon_file) as salmon:
         header = salmon.readline().strip().split()[3:]
@@ -51,7 +51,7 @@ def parse_salmon(salmon_file, col_map, take_log):
                 salmon_cols = tissue_map[tissue]
                 selected_values = [values[n] for n in salmon_cols]
                 avg_value = sum(selected_values) / len(selected_values)
-                log_avg_value = log2(avg_value) if avg_value > 0 else 0
+                log_avg_value = log2(avg_value + 1)
                 entries.append({
                     'id': name,
                     'sample': tissue,
@@ -117,7 +117,7 @@ def write_entries(entries, db_config, experiment):
               help='Experiment name (a table based on this name will be used/created)')
 @click.option('-l', '--log2', 'take_log',
               is_flag=True,
-              help='Take the log2 of the averaged TPM values')
+              help='Take the log2(x+1) of the averaged TPM values')
 @click.argument('salmon_file',
                 type=click.Path(exists=True))
 @click.argument('col_map_file',
